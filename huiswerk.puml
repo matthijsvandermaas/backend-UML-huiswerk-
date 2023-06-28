@@ -1,0 +1,49 @@
+@startuml
+class Product {
+  - id: int
+  - name: string
+  - description: string
+  - price: decimal
+  - category: string
+}
+
+class Personeel {
+  - id: int
+  - name: string
+  - role: string
+}
+
+class Voorraad {
+  - product: Product
+  - quantity: int
+}
+
+class Inkoop {
+  - id: int
+  - product: Product
+  - quantity: int
+  - price: decimal
+}
+
+class Verkoop {
+  - id: int
+  - product: Product
+  - quantity: int
+  - price: decimal
+}
+
+class Magazijn {
+  - product: Product
+  - location: string
+}
+
+Product "1" *-- "1..*" Voorraad
+Product "1" *-- "1..*" Inkoop
+Product "1" *-- "1..*" Verkoop
+Product "1" *-- "1..*" Magazijn
+
+Personeel "1" -- "1..*" Voorraad
+Personeel "1" -- "1..*" Inkoop
+Personeel "1" -- "1..*" Verkoop
+
+@enduml
